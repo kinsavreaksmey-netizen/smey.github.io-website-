@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dink and Snacks Khmer</title>
+  <!-- FIX: removed duplicate style.css link, single link only -->
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <!-- FIX: removed duplicate </header> tag; cart sidebar moved OUTSIDE header -->
+  <header class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+    <div class="container py-2">
+
+      <a class="navbar-brand fw-bold" href="#">Dink <span class="text-danger">and</span> Snacks <span class="text-danger">Khmer</span></a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto gap-3">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#delivery">Delivery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="d-flex align-items-center gap-3 ms-3">
+        <div class="cart-icon" id="cart-icon-btn">🛒 <span id="cart-count">0</span></div>
+        <a href="#" id="login-nav-btn" class="login-btn-box">Login</a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ===== CART SIDEBAR (FIX: moved outside header, uses correct .cart-sidebar-overlay + .open pattern) ===== -->
+  <div id="cart-modal" class="cart-sidebar-overlay">
+    <div class="cart-sidebar">
+      <div class="cart-header">
+        <h3>កន្ត្រកទំនិញរបស់អ្នក (<span id="cart-sidebar-count">0</span>)</h3>
+        <span class="close-cart" id="close-cart-btn">&times;</span>
+      </div>
+
+      <div id="cart-items-container" class="cart-items-container">
+        <p class="empty-message">មិនទាន់មានទំនិញក្នុងកន្ត្រកឡើយ។</p>
+      </div>
+
+      <div class="cart-footer">
+        <div class="total-price-box" style="display:flex;justify-content:space-between;margin-bottom:12px;font-weight:600;">
+          <span>សរុប៖</span>
+          <span id="cart-total-price">$0.00</span>
+        </div>
+        <button class="checkout-btn">បន្តទៅការទូទាត់ប្រាក់</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LOGIN MODAL ===== -->
+  <div id="login-modal" class="modal-overlay">
+    <div class="login-card">
+      <span class="close-modal">&times;</span>
+      <h2>Welcome <span>Back</span></h2>
+      <p>Please login to your account</p>
+
+      <form id="login-form">
+        <div class="modal-input-box">
+          <label>Email Address</label>
+          <input type="email" placeholder="enter your email" required>
+        </div>
+        <div class="modal-input-box">
+          <label>Password</label>
+          <input type="password" placeholder="enter your password" required>
+        </div>
+        <button type="submit" class="login-submit-btn">Login</button>
+      </form>
+
+      <div class="modal-footer-text">
+        Don't have an account? <a href="mailto:yourshop@email.com?subject=Sign%20Up%20Request" target="_blank">Sign Up</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="container hero-wrapper">
+
+      <div class="hero-left">
+        <p class="sub-title">PREMIUM DRINKS & FOOD</p>
+        <h1>Order Favorite <br>Food and Drinks</h1>
+
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Search your favorite food or drink...">
+          <button id="search-btn">🔍</button>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#menu" class="order-btn">Order Now</a>
+          <a href="#menu" class="explore-btn">Explore Menu</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <img src="./image/c0b492a834ef0860fa372520c7b1271a.jpg" alt="3D Splash Drinks" class="hero-img-3d">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== MENU ===== -->
+  <section class="menu" id="menu">
+    <div class="container">
+      <h2>Our Popular Menu</h2>
+
+      <div class="categories">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="burger">🍔 Burger</button>
+        <button data-filter="drinks">🥤 Drinks</button>
+        <button data-filter="pizza">🍕 Pizza</button>
+        <button data-filter="ice-cream">🍦 Ice Cream</button>
+      </div>
+
+      <div class="menu-grid">
+
+        <!-- Burger -->
+        <div class="menu-item" data-category="burger">
+          <div class="image-box"><img src="./image/b1.webp" alt="Beef Burger"><span class="discount">Hot</span></div>
+          <div class="menu-info">
+            <h4>Beef Burger</h4>
+            <p class="rating">⭐ 4.7 (98)</p>
+            <div class="price-cart"><span class="price">$3.99</span><button class="cart-btn" data-name="Beef Burger" data-price="3.99">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="burger">
+          <div class="image-box"><img src="./image/b2.jpg" alt="Cheese Burger"></div>
+          <div class="menu-info">
+            <h4>Cheese Burger</h4>
+            <p class="rating">⭐ 4.6 (85)</p>
+            <div class="price-cart"><span class="price">$6.99</span><button class="cart-btn" data-name="Cheese Burger" data-price="6.99">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="burger">
+          <div class="image-box"><img src="./image/b3.jpg" alt="Hotdog Burger"></div>
+          <div class="menu-info">
+            <h4>Hotdog Burger</h4>
+            <p class="rating">⭐ 4.6 (100)</p>
+            <div class="price-cart"><span class="price">$3.99</span><button class="cart-btn" data-name="Hotdog Burger" data-price="3.99">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="burger">
+          <div class="image-box"><img src="./image/b4.webp" alt="Shawarma"></div>
+          <div class="menu-info">
+            <h4>Shawarma</h4>
+            <p class="rating">⭐ 4.6 (95)</p>
+            <div class="price-cart"><span class="price">$5.99</span><button class="cart-btn" data-name="Shawarma" data-price="5.99">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="burger">
+          <div class="image-box"><img src="./image/b5.jpg" alt="Burrito"></div>
+          <div class="menu-info">
+            <h4>Burrito</h4>
+            <p class="rating">⭐ 4.6 (85)</p>
+            <div class="price-cart"><span class="price">$6.99</span><button class="cart-btn" data-name="Burrito" data-price="6.99">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="burger">
+          <div class="image-box"><img src="./image/b7.jpg" alt="Bread Burger"></div>
+          <div class="menu-info">
+            <h4>Bread Burger</h4>
+            <p class="rating">⭐ 4.6 (90)</p>
+            <div class="price-cart"><span class="price">$6.99</span><button class="cart-btn" data-name="Bread Burger" data-price="6.99">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="burger">
+          <div class="image-box"><img src="./image/b8.jpg" alt="Fried Chicken"></div>
+          <div class="menu-info">
+            <h4>Fried Chicken</h4>
+            <p class="rating">⭐ 4.6 (86)</p>
+            <div class="price-cart"><span class="price">$6.99</span><button class="cart-btn" data-name="Fried Chicken" data-price="6.99">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="burger">
+          <div class="image-box"><img src="./image/b9.jpg" alt="Lamb Burger"></div>
+          <div class="menu-info">
+            <h4>Lamb Burger</h4>
+            <p class="rating">⭐ 4.6 (85)</p>
+            <div class="price-cart"><span class="price">$6.99</span><button class="cart-btn" data-name="Lamb Burger" data-price="6.99">+</button></div>
+          </div>
+        </div>
+
+        <!-- Drinks -->
+        <div class="menu-item" data-category="drinks">
+          <div class="image-box"><img src="./image/1.jpg" alt="Milkshake"></div>
+          <div class="menu-info">
+            <h4>Milkshake</h4>
+            <p class="rating">⭐ 4.8 (140)</p>
+            <div class="price-cart"><span class="price">$3.50</span><button class="cart-btn" data-name="Milkshake" data-price="3.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="drinks">
+          <div class="image-box"><img src="./image/2jpg.jpg" alt="Pastel Purpleshake"></div>
+          <div class="menu-info">
+            <h4>Pastel Purpleshake</h4>
+            <p class="rating">⭐ 4.8 (140)</p>
+            <div class="price-cart"><span class="price">$3.50</span><button class="cart-btn" data-name="Pastel Purpleshake" data-price="3.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="drinks">
+          <div class="image-box"><img src="./image/3.jpg" alt="Blueberry Milkshake"></div>
+          <div class="menu-info">
+            <h4>Blueberry Milkshake</h4>
+            <p class="rating">⭐ 4.8 (140)</p>
+            <div class="price-cart"><span class="price">$3.99</span><button class="cart-btn" data-name="Blueberry Milkshake" data-price="3.99">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="drinks">
+          <div class="image-box"><img src="./image/4.jpg" alt="Citrus Berry Sparkler"></div>
+          <div class="menu-info">
+            <h4>Citrus Berry Sparkler</h4>
+            <p class="rating">⭐ 4.8 (140)</p>
+            <div class="price-cart"><span class="price">$5.99</span><button class="cart-btn" data-name="Citrus Berry Sparkler" data-price="5.99">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="drinks">
+          <div class="image-box"><img src="./image/5.jpg" alt="Sweet Monkey Shake"></div>
+          <div class="menu-info">
+            <h4>Sweet Monkey Shake</h4>
+            <p class="rating">⭐ 4.8 (140)</p>
+            <div class="price-cart"><span class="price">$4.50</span><button class="cart-btn" data-name="Sweet Monkey Shake" data-price="4.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="drinks">
+          <div class="image-box"><img src="./image/6.jpg" alt="Mango Shake"></div>
+          <div class="menu-info">
+            <h4>Mango Shake</h4>
+            <p class="rating">⭐ 4.8 (140)</p>
+            <div class="price-cart"><span class="price">$3.50</span><button class="cart-btn" data-name="Mango Shake" data-price="3.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="drinks">
+          <div class="image-box"><img src="./image/7.jpg" alt="Red Watermelon Shake"></div>
+          <div class="menu-info">
+            <h4>Red Watermelon Shake</h4>
+            <p class="rating">⭐ 4.8 (140)</p>
+            <div class="price-cart"><span class="price">$2.99</span><button class="cart-btn" data-name="Red Watermelon Shake" data-price="2.99">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="drinks">
+          <div class="image-box"><img src="./image/8.jpg" alt="Kiwi Palo"></div>
+          <div class="menu-info">
+            <h4>Kiwi Palo</h4>
+            <p class="rating">⭐ 4.8 (140)</p>
+            <div class="price-cart"><span class="price">$3.50</span><button class="cart-btn" data-name="Kiwi Palo" data-price="3.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="drinks">
+          <div class="image-box"><img src="./image/9.jpg" alt="Dragon Fruit Juice"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Dragon Fruit Juice</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$8.50</span><button class="cart-btn" data-name="Dragon Fruit Juice" data-price="8.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="drinks">
+          <div class="image-box"><img src="./image/10.webp" alt="Milk Coffee"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Milk Coffee</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$4.50</span><button class="cart-btn" data-name="Milk Coffee" data-price="4.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="drinks">
+          <div class="image-box"><img src="./image/11.jpg" alt="Chocolate Milk"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Chocolate Milk</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$5.50</span><button class="cart-btn" data-name="Chocolate Milk" data-price="5.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="drinks">
+          <div class="image-box"><img src="./image/12.jpg" alt="Hot Coffee"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Hot Coffee</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$9.50</span><button class="cart-btn" data-name="Hot Coffee" data-price="9.50">+</button></div>
+          </div>
+        </div>
+
+        <!-- Pizza (FIX: removed massive duplicates — each pizza listed once only) -->
+        <div class="menu-item" data-category="pizza">
+          <div class="image-box"><img src="./image/p3.jpg" alt="Pizza"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Pizza</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$2.50</span><button class="cart-btn" data-name="Pizza" data-price="2.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="pizza">
+          <div class="image-box"><img src="./image/p4.webp" alt="Sandwich"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Sandwich</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$4.50</span><button class="cart-btn" data-name="Sandwich" data-price="4.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="pizza">
+          <div class="image-box"><img src="./image/p7.jpg" alt="Pizza Margherita"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Pizza Margherita</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$9.99</span><button class="cart-btn" data-name="Pizza Margherita" data-price="9.99">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="pizza">
+          <div class="image-box"><img src="./image/p9.webp" alt="Chicken Pizza"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Chicken Pizza</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$7.50</span><button class="cart-btn" data-name="Chicken Pizza" data-price="7.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="pizza">
+          <div class="image-box"><img src="./image/p10.jpg" alt="Mikle Pizza"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Mikle Pizza</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$8.50</span><button class="cart-btn" data-name="Mikle Pizza" data-price="8.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="pizza">
+          <div class="image-box"><img src="./image/p11.jpg" alt="Pizza Marinara"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Pizza Marinara</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$9.99</span><button class="cart-btn" data-name="Pizza Marinara" data-price="9.99">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="pizza">
+          <div class="image-box"><img src="./image/p12.jpg" alt="Calzone Pizza"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Calzone Pizza</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$7.50</span><button class="cart-btn" data-name="Calzone Pizza" data-price="7.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="pizza">
+          <div class="image-box"><img src="./image/p13.jpg" alt="Sicilian Pizza"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Sicilian Pizza</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$5.50</span><button class="cart-btn" data-name="Sicilian Pizza" data-price="5.50">+</button></div>
+          </div>
+        </div>
+
+        <!-- Ice Cream -->
+        <div class="menu-item" data-category="ice-cream">
+          <div class="image-box"><img src="./image/i1.jpg" alt="Ice Cream"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Ice Cream</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$2.50</span><button class="cart-btn" data-name="Ice Cream" data-price="2.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="ice-cream">
+          <div class="image-box"><img src="./image/i2.jpg" alt="Ice Chocolate"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Ice Chocolate</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$4.50</span><button class="cart-btn" data-name="Ice Chocolate" data-price="4.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="ice-cream">
+          <div class="image-box"><img src="./image/i3.webp" alt="Mango Ice Cream"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Mango Ice Cream</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$9.99</span><button class="cart-btn" data-name="Mango Ice Cream" data-price="9.99">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="ice-cream">
+          <div class="image-box"><img src="./image/i4.png" alt="Oreo Ice Cream"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Oreo Ice Cream</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$7.50</span><button class="cart-btn" data-name="Oreo Ice Cream" data-price="7.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="ice-cream">
+          <div class="image-box"><img src="./image/i5.jpg" alt="Raspberry Cactus Ice Cream"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Raspberry Cactus Ice Cream</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$8.50</span><button class="cart-btn" data-name="Raspberry Cactus Ice Cream" data-price="8.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="ice-cream">
+          <div class="image-box"><img src="./image/i6.jpg" alt="Strawberry Ice Cream"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Strawberry Ice Cream</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$9.99</span><button class="cart-btn" data-name="Strawberry Ice Cream" data-price="9.99">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="ice-cream">
+          <div class="image-box"><img src="./image/i7.jpg" alt="Blueberry Ice Cream"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Blueberry Ice Cream</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$7.50</span><button class="cart-btn" data-name="Blueberry Ice Cream" data-price="7.50">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="ice-cream">
+          <div class="image-box"><img src="./image/i8.jpg" alt="Coconut Ice Cream"><span class="discount">New</span></div>
+          <div class="menu-info">
+            <h4>Coconut Ice Cream</h4>
+            <p class="rating">⭐ 5.0 (200)</p>
+            <div class="price-cart"><span class="price">$5.50</span><button class="cart-btn" data-name="Coconut Ice Cream" data-price="5.50">+</button></div>
+          </div>
+        </div>
+
+        <!-- Dessert -->
+        <div class="menu-item" data-category="dessert">
+          <div class="image-box"><img src="./image/bw.jpg" alt="Brownie"><span class="discount">Sweet</span></div>
+          <div class="menu-info">
+            <h4>Brownie</h4>
+            <p class="rating">⭐ 4.9 (60)</p>
+            <div class="price-cart"><span class="price">$4.00</span><button class="cart-btn" data-name="Brownie" data-price="4.00">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="dessert">
+          <div class="image-box"><img src="./image/ch.webp" alt="Chocolate"><span class="discount">Sweet</span></div>
+          <div class="menu-info">
+            <h4>Chocolate</h4>
+            <p class="rating">⭐ 4.9 (60)</p>
+            <div class="price-cart"><span class="price">$4.00</span><button class="cart-btn" data-name="Chocolate" data-price="4.00">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="dessert">
+          <div class="image-box"><img src="./image/sb.webp" alt="Strawberry"><span class="discount">Sweet</span></div>
+          <div class="menu-info">
+            <h4>Strawberry</h4>
+            <p class="rating">⭐ 4.9 (60)</p>
+            <div class="price-cart"><span class="price">$4.00</span><button class="cart-btn" data-name="Strawberry" data-price="4.00">+</button></div>
+          </div>
+        </div>
+
+        <div class="menu-item" data-category="dessert">
+          <div class="image-box"><img src="./image/cake.jpg" alt="Chocolate Cake"><span class="discount">Sweet</span></div>
+          <div class="menu-info">
+            <h4>Chocolate Cake</h4>
+            <p class="rating">⭐ 4.9 (60)</p>
+            <div class="price-cart"><span class="price">$4.00</span><button class="cart-btn" data-name="Chocolate Cake" data-price="4.00">+</button></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="about">
+    <div class="container about-wrapper">
+
+      <div class="about-image">
+        <img src="./image/s.jpg" alt="Healthy Food Salad">
+      </div>
+
+      <div class="about-content">
+        <h2 class="about-title">About <span>Us</span></h2>
+        <h3 class="why-choose">Why Choose Us?</h3>
+        <p class="about-description">
+          FastFood VIBE is a modern food delivery service providing delicious meals
+          with fast delivery across Phnom Penh. We focus on fresh ingredients,
+          fast service, and customer satisfaction.
+        </p>
+        <a href="#menu" class="order-btn">Order Now</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== DELIVERY ===== -->
+  <section id="delivery" class="delivery">
+    <div class="container">
+      <h2 class="section-title">Delivery Information</h2>
+
+      <div class="delivery-steps">
+        <div class="step">
+          <div class="step-icon">📱</div>
+          <h4>1. Choose Food</h4>
+          <p>Select your favorite item from our menu.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">🛒</div>
+          <h4>2. Place Order</h4>
+          <p>Add food to cart and confirm your order.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">🚚</div>
+          <h4>3. Fast Delivery</h4>
+          <p>Your food will arrive in 30–45 minutes.</p>
+        </div>
+      </div>
+
+      <div class="delivery-stats">
+        <div class="stat-box"><h3>10K+</h3><p>Happy Customers</p></div>
+        <div class="stat-box"><h3>500+</h3><p>Orders Daily</p></div>
+        <div class="stat-box"><h3>30 Min</h3><p>Fast Delivery</p></div>
+        <div class="stat-box"><h3>50+</h3><p>Food Items</p></div>
+      </div>
+
+      <!-- FIX: delivery-grid and delivery-map were siblings before; map now sits properly inside its own card -->
+      <div class="delivery-grid">
+        <div class="delivery-card">
+          <div class="icon-circle">🚚</div>
+          <h3>Fast Delivery</h3>
+          <p>We deliver your food quickly and safely anywhere in Phnom Penh.</p>
+        </div>
+        <div class="delivery-card">
+          <div class="icon-circle">⏰</div>
+          <h3>Flexible Timing</h3>
+          <p>Order anytime from 10:00 AM – 10:00 PM. We're always ready!</p>
+        </div>
+        <div class="delivery-card">
+          <div class="icon-circle">💵</div>
+          <h3>Cash on Delivery</h3>
+          <p>Pay easily when your delicious food arrives at your door.</p>
+        </div>
+      </div>
+
+      <div class="delivery-map">
+        <h3>Our Delivery Area</h3>
+        <iframe
+          src="https://www.google.com/maps?q=Phnom+Penh&output=embed"
+          width="100%"
+          height="300"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          title="Delivery area map">
+        </iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="contact">
+    <h2 class="title">Contact <span>Us</span></h2>
+
+    <div class="contact-container">
+      <div class="contact-image">
+        <img src="./image/h.jpg" alt="Contact Illustration">
+      </div>
+
+      <!-- FIX: contact form should not use <form action=""> that causes page reload; use button type="button" or handle via JS -->
+      <div class="contact-form">
+        <div class="input-group">
+          <div class="input-box">
+            <label>Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="input-box">
+            <label>Email</label>
+            <input type="email" placeholder="Your email">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="input-box">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="Your number">
+          </div>
+          <div class="input-box">
+            <label>Quantity</label>
+            <input type="number" value="1" min="1">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="input-box">
+            <label>Your Order</label>
+            <input type="text" placeholder="Food name">
+          </div>
+          <div class="input-box">
+            <label>Address</label>
+            <input type="text" placeholder="Your address">
+          </div>
+        </div>
+
+        <button type="button" class="send-btn" id="send-contact-btn">Send Message</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-wrapper">
+
+      <div class="footer-col">
+        <div class="footer-logo">Dink <span>and</span> Snacks</div>
+        <p class="footer-desc">Premium food delivery in Phnom Penh. Fresh, delicious, and delivered right to your door.</p>
+        <div class="social-links">
+          <!-- FIX: use Bootstrap Icons (already loaded) instead of Font Awesome which was never imported -->
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Our Menu</h5>
+        <ul>
+          <li><a href="#menu">Burger</a></li>
+          <li><a href="#menu">Drinks</a></li>
+          <li><a href="#menu">Pizza</a></li>
+          <li><a href="#menu">Ice Cream</a></li>
+          <li><a href="#menu">Desserts</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Contact Us</h5>
+        <p>📍 Phnom Penh, Cambodia</p>
+        <p>📞 +855 12 345 678</p>
+        <p>📧 kinsaoreaksmey@gmail.com</p>
+      </div>
+
+    </div>
+
+    <hr class="footer-line">
+
+    <div class="footer-bottom">
+      <small>© 2026 FastFood VIBE. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <!-- ===== TOAST ===== -->
+  <div id="toast">✅ Added to cart</div>
+
+  <!-- Bootstrap JS (single script tag, at end of body) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
